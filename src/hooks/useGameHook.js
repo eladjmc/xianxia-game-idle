@@ -10,6 +10,16 @@ export const useGameHook = () => {
     }));
   };
 
+  const setPlayerSetup = (name, spiritRoot, technique) => {
+    setState(prevState => ({
+      ...prevState,
+      playerName: name,
+      spiritRoot,
+      cultivationTechniques: [...prevState.cultivationTechniques, technique.name],
+      currentlyUsedCultivationTechnique: technique,
+    }));
+  };
+
   // Add more utility functions here
 
   return {
@@ -30,9 +40,11 @@ export const useGameHook = () => {
     agl: state.agl,
     luk: state.luk,
     age: state.age,
+    playerName: state.playerName,
 
     // Utility functions
     increaseXP,
+    setPlayerSetup
     // Add more utility functions here
   };
 };

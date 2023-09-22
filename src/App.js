@@ -2,18 +2,25 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Layout/Navbar/Navbar";
 import MainPage from "./pages/MainPage/MainPage";
+import SetupPage from "./pages/SetupPage/SetupPage";
+import { useGameHook } from "./hooks/useGameHook"; // Import your custom hook
 import "./App.css";
 
 function App() {
+  const { playerName } = useGameHook(); // Destructure the name from your custom hook
+  console.log(playerName);
   return (
     <div className="game-main-container">
       <main className="game-window">
         <Router>
           <div className="App">
-            <Navbar />
+            {playerName && <Navbar />}
             <Routes>
-              <Route path="/" element={<MainPage />} />
-              {/* Add more routes here */}
+              {playerName ? (
+                <Route path="/" element={<MainPage />} />
+              ) : (
+                <Route path="/*" element={<SetupPage />} />
+              )}
             </Routes>
           </div>
         </Router>

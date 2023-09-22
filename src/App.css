@@ -21,10 +21,10 @@
   background-color: var(--game-container-background);
 }
 
-.game-window {
+.game-window, .App{
   box-shadow: var(--game-window-box-shadow);
-  min-width: var(--game-window-min-width);
-  min-height: var(--game-window-min-height);
+  width: var(--game-window-min-width);
+  height: var(--game-window-min-height);
   background: linear-gradient(to bottom, var(--game-window-bg-start), var(--game-window-bg-end));
   color: var(--game-window-accent-color);
 }

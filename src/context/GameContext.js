@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 // Initial state
 const initialState = {
@@ -6,12 +6,13 @@ const initialState = {
   currentRealmLevel: 1,
   currentCultivationXP: 0,
   maxCultivationXP: 100,
-  spiritRoot: { type: 'water', grade: 1 },
+  spiritRoot: { type: "water", grade: 1 },
   cultivationTechniques: [],
   currentlyUsedCultivationTechnique: {},
   battleTechniques: [],
-  currentBattleTechnique: '',
-  spiritStones: 3324,
+  currentBattleTechnique: "",
+  spiritStones: 10000000,
+  playerName: "",
   hp: 100,
   sp: 100,
   str: 10,
