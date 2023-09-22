@@ -1,9 +1,15 @@
 :root {
+  /* Existing variables */
   --game-container-background: #c5c5c5;
   --game-window-min-width: 640px;
   --game-window-min-height: 480px;
   --game-window-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2),
     inset 0 0 10px rgba(0, 0, 0, 0.3);
+
+  /* New variables for game window background */
+  --game-window-bg-start: #121212;
+  --game-window-bg-end: #232323;
+  --game-window-accent-color: #0fd850;
 }
 
 .game-main-container {
@@ -12,11 +18,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--game-container-background);
 }
 
 .game-window {
   box-shadow: var(--game-window-box-shadow);
   min-width: var(--game-window-min-width);
   min-height: var(--game-window-min-height);
-  background-color: var(--game-container-background);
+  background: linear-gradient(to bottom, var(--game-window-bg-start), var(--game-window-bg-end));
+  color: var(--game-window-accent-color);
 }

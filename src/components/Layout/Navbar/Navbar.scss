@@ -1,0 +1,35 @@
+// Define variables for easy customization
+$navbar-font: 'Press Start 2P', cursive;
+$navbar-link-color: #0fd850;
+$base-color-start: #121212;
+$base-color-end: #232323;
+$accent-color: #0fd850;
+
+.navbar {
+  background: linear-gradient(to right, $base-color-start, $base-color-end);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: $navbar-font;
+  
+
+  .navbar-links {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2px;
+
+    a {
+      text-decoration: none;
+      color: $navbar-link-color;
+      text-transform: uppercase;
+      border: 2px solid $navbar-link-color;
+      padding: 0.5rem 1rem;
+      transition: background 0.3s, color 0.3s;
+
+      &:hover {
+        background: $navbar-link-color;
+        color: $base-color-start;
+      }
+    }
+  }
+}
