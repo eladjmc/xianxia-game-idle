@@ -11,7 +11,7 @@ const initialState = {
   currentlyUsedCultivationTechnique: {},
   battleTechniques: [],
   currentBattleTechnique: "",
-  spiritStones: 10000000,
+  spiritStones: 5,
   playerName: "",
   hp: 100,
   sp: 100,
@@ -19,6 +19,7 @@ const initialState = {
   agl: 10,
   luk: 10,
   age: 18,
+  isGameStarted: false,
 };
 
 const GameContext = createContext({

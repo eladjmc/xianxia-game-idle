@@ -3,18 +3,20 @@ import React, { useState } from "react";
 import { useGameHook } from "../../hooks/useGameHook";
 import { useNavigate } from "react-router-dom";
 import "./SetupPage.scss";
+import { getRandomRoot } from "../../utils/utils";
+import { NO_ELEMENT_TECHNIQUES, WORST_GRADE } from "../../models/cultivationTechniques";
 
 const SetupPage = () => {
   const [playerName, setPlayerName] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [newSpiritRoot,setNewSpiritRoot] = useState({})
   const [newCultivationTechnique,setNewCultivationTechnique] = useState({})
-  const { setPlayerSetup, spiritRoot } = useGameHook();
+  const { setPlayerSetup } = useGameHook();
   const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSaveName = () => {
-    const randomSpiritRoot = { type: "water", grade: 1 };
-    const basicCultivationTechnique = { name: "Basic Chi Manual", grade: 1 };
+    const randomSpiritRoot = getRandomRoot();
+    const basicCultivationTechnique = NO_ELEMENT_TECHNIQUES[WORST_GRADE];
     setNewSpiritRoot(randomSpiritRoot)
     setNewCultivationTechnique(basicCultivationTechnique);
     let finalName = playerName;
@@ -48,7 +50,7 @@ const SetupPage = () => {
           <p>Daoist {playerName}, you reincarnated.</p>
           <p>Your age is 18 and your spirit root is of the</p>
           <p className="special-line">
-            -{spiritRoot.type}
+            -{newSpiritRoot.type}
             {" Element-"}
           </p>
           <p>You will start your journey at the</p>

@@ -1,22 +1,26 @@
-import { useGame } from '../context/GameContext';
+import { useGame } from "../context/GameContext";
 
 export const useGameHook = () => {
   const { state, setState } = useGame();
 
   const increaseXP = (amount) => {
-    setState(prevState => ({
+    setState((prevState) => ({
       ...prevState,
       currentCultivationXP: prevState.currentCultivationXP + amount,
     }));
   };
 
   const setPlayerSetup = (name, spiritRoot, technique) => {
-    setState(prevState => ({
+    setState((prevState) => ({
       ...prevState,
       playerName: name,
       spiritRoot,
-      cultivationTechniques: [...prevState.cultivationTechniques, technique.name],
+      cultivationTechniques: [
+        ...prevState.cultivationTechniques,
+        technique.name,
+      ],
       currentlyUsedCultivationTechnique: technique,
+      isGameStarted: true,
     }));
   };
 
@@ -41,10 +45,11 @@ export const useGameHook = () => {
     luk: state.luk,
     age: state.age,
     playerName: state.playerName,
+    isGameStarted: state.isGameStarted,
 
     // Utility functions
     increaseXP,
-    setPlayerSetup
+    setPlayerSetup,
     // Add more utility functions here
   };
 };

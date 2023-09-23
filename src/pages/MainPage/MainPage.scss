@@ -1,0 +1,28 @@
+.main-page {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 46px);
+
+  .medi {
+    background-image: url("../../assets/svgs/meditation.svg");
+    background-size: cover; /* Adjust the size as needed */
+    /* Other CSS properties for styling the element */
+    width: 130px;
+    height: 130px;
+    filter: invert(52%) sepia(93%) saturate(3702%) hue-rotate(108deg)
+      brightness(96%) contrast(102%);
+    position: absolute;
+    top: calc(50% + 82px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .chi-particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--game-window-accent-color); // Neon green color
+    border-radius: 50%;
+    opacity: 1;
+  }
+}
