@@ -46,6 +46,7 @@ export const useGameHook = () => {
     age: state.age,
     playerName: state.playerName,
     isGameStarted: state.isGameStarted,
+    currentBattleTechniqueXP:state.currentBattleTechniqueXP,
 
     // Utility functions
     increaseXP,

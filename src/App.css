@@ -22,9 +22,11 @@
 }
 
 .game-window, .App{
+  height: 100%;
+  width: 100%;
   box-shadow: var(--game-window-box-shadow);
-  width: var(--game-window-min-width);
-  height: var(--game-window-min-height);
+  min-width: var(--game-window-min-width);
+  min-height: var(--game-window-min-height);
   background: linear-gradient(to bottom, var(--game-window-bg-start), var(--game-window-bg-end));
   color: var(--game-window-accent-color);
 }

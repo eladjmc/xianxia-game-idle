@@ -21,7 +21,9 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: var(--game-window-accent-color); // Neon green color
+    // background-color: var(--game-window-accent-color); // Neon green color
+    background-color: white; // Neon green color
+    color: white;
     border-radius: 50%;
     opacity: 1;
   }

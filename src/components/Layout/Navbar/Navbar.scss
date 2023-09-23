@@ -11,7 +11,7 @@ $accent-color: #0fd850;
   justify-content: space-between;
   align-items: center;
   font-family: $navbar-font;
-  padding-right: 6px;
+  padding-right: 16px;
 
   .navbar-links {
     display: flex;
@@ -48,11 +48,11 @@ $accent-color: #0fd850;
       &::before {
         content: "";
         position: absolute;
-        top: -3px; /* Adjust the positioning as needed */
-        left: -1px; /* Adjust the positioning as needed */
+        top: -9px; /* Adjust the positioning as needed */
+        left: -6px; /* Adjust the positioning as needed */
         background-image: url('../../../assets/svgs/diamonf.svg'); /* Update with the correct path */
-        width: 20px; /* Adjust the width and height to match your SVG */
-        height: 20px; /* Adjust the width and height to match your SVG */
+        width: 26px; /* Adjust the width and height to match your SVG */
+        height: 26px; /* Adjust the width and height to match your SVG */
         background-size: cover;
       }
     }
