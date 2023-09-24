@@ -1,7 +1,56 @@
 import { useGame } from "../context/GameContext";
+import { REALM_NAME } from "../models/realmModel";
+import { calculateXpGain } from "../utils/gameLogic";
+
+const levelUpScalingFactor = 1.2; // Increase max XP by 20% each level
+const realmUpScalingFactor = 2;  // Double max XP each realm
 
 export const useGameHook = () => {
   const { state, setState } = useGame();
+
+  const levelUp = (prevState) => {
+    let newRealm = prevState.cultivationRealm;
+    let newLevel = prevState.currentRealmLevel + 1;
+    let newAge = prevState.age;
+    let newMaxXP = prevState.maxCultivationXP * levelUpScalingFactor;
+  
+    // Default stat increases
+    let strIncrease = 1;
+    let aglIncrease = 1;
+    let spIncrease = 5;
+    let hpIncrease = 10;
+    let lukIncrease = 1;
+  
+    if (newLevel > 9) {
+      newRealm++;
+      newLevel = 1;
+      newAge = REALM_NAME[newRealm + 1].baseAge;
+      newMaxXP *= realmUpScalingFactor;
+  
+      // Multiply stats by 5 upon realm level up
+      strIncrease *= 5;
+      aglIncrease *= 5;
+      spIncrease *= 5;
+      hpIncrease *= 5;
+      lukIncrease *= 5;
+    }
+  
+    return {
+      ...prevState,
+      cultivationRealm: newRealm,
+      currentRealmLevel: newLevel,
+      currentCultivationXP: 0,
+      maxCultivationXP: newMaxXP,
+      age: newAge,
+      str: prevState.str + strIncrease,
+      agl: prevState.agl + aglIncrease,
+      sp: prevState.sp + spIncrease,
+      hp: prevState.hp + hpIncrease,
+      luk: prevState.luk + lukIncrease,
+    };
+  };
+  
+  
 
   const increaseXP = (amount) => {
     setState((prevState) => ({
@@ -24,10 +73,34 @@ export const useGameHook = () => {
     }));
   };
 
-  // Add more utility functions here
+  const gainCultivationXP = () => {
+    const xpGain = calculateXpGain(
+      state.currentlyUsedCultivationTechnique,
+      state.spiritRoot.type,
+      state.baseCultivationXPTick
+    );
+    console.log("XP Gain:", xpGain);
+  
+    setState((prevState) => {
+      const newXP = prevState.currentCultivationXP + xpGain;
+      if (newXP >= prevState.maxCultivationXP) {
+        // Call levelUp function here and return its new state
+        const leveledUpState = levelUp(prevState);
+        return {
+          ...leveledUpState,
+          currentCultivationXP: 0,
+        };
+      }
+      return {
+        ...prevState,
+        currentCultivationXP: newXP,
+      };
+    });
+  };
+  
+  
 
   return {
-    // State
     cultivationRealm: state.cultivationRealm,
     currentRealmLevel: state.currentRealmLevel,
     currentCultivationXP: state.currentCultivationXP,
@@ -44,13 +117,15 @@ export const useGameHook = () => {
     agl: state.agl,
     luk: state.luk,
     age: state.age,
+    currentAge: state.currentAge,
     playerName: state.playerName,
     isGameStarted: state.isGameStarted,
-    currentBattleTechniqueXP:state.currentBattleTechniqueXP,
+    currentBattleTechniqueXP: state.currentBattleTechniqueXP,
+    baseCultivationXPTick: state.baseCultivationXPTick,
 
-    // Utility functions
     increaseXP,
     setPlayerSetup,
-    // Add more utility functions here
+    gainCultivationXP,
+    levelUp,
   };
 };

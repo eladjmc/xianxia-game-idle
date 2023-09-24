@@ -2,6 +2,8 @@
   position: relative;
   width: 100%;
   height: calc(100% - 46px);
+  display: flex;
+  flex-direction: column;
 
   .medi {
     background-image: url("../../assets/svgs/meditation.svg");
@@ -27,4 +29,34 @@
     border-radius: 50%;
     opacity: 1;
   }
+
+  .left-side-container{
+    width: 30vw;
+    max-width: 270px;
+    height: 100%;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 100px 0;
+  }
+
+  .focus-button {
+    color: var(--game-window-accent-color); /* Text color */
+    font-size: 17px;
+    background-color: var(--game-window-bg-end); /* Button background color */
+    border: 1px solid var(--game-window-accent-color); /* Border color */
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 4px 0px var(--game-window-accent-color); /* Shadow color */
+    transition: all .1s;
+    margin-bottom: 10px;
+  }
+  
+  .focus-button:active {
+    box-shadow: 0px 2px 0px var(--game-window-accent-color); /* Shadow color when active */
+    position: relative;
+    top: 2px;
+  }
+
 }

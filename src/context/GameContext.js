@@ -7,9 +7,14 @@ const initialState = {
   currentCultivationXP: 0,
   currentBattleTechniqueXP: 0,
   maxCultivationXP: 100,
+  baseCultivationXPTick:300,
   spiritRoot: { type: "Water", grade: 1 },
   cultivationTechniques: [],
-  currentlyUsedCultivationTechnique: {},
+  currentlyUsedCultivationTechnique: {
+    name: "Aqua Flow Meditation",
+    grade: 1,
+    type: "Water",
+  },
   battleTechniques: [
     {
       name: "Basic Martial Arts",
@@ -34,6 +39,7 @@ const initialState = {
   agl: 10,
   luk: 10,
   age: 18,
+  currentAge: 18,
   isGameStarted: false,
 };
 
@@ -46,6 +52,7 @@ export const GameProvider = ({ children }) => {
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
+    console.log("Current State:", state);
     // Any side-effects, like saving to local storage, can go here
   }, [state]);
 
